@@ -16,6 +16,7 @@ import static io.qameta.allure.Allure.step;
 
 
 public class TestBase {
+
     @BeforeAll
     public static void setup() {
         Configuration.browser = BrowserstackMobileDriver.class.getName();
@@ -25,19 +26,15 @@ public class TestBase {
     @BeforeEach
     public void startDriver() {
         addListener("AllureSelenide", new AllureSelenide());
-
         open();
     }
 
     @AfterEach
     public void afterEach() {
         String sessionId = sessionId();
-
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-
         step("Close driver", Selenide::closeWebDriver);
-
         Attach.video(sessionId);
     }
 }
