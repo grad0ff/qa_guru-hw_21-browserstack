@@ -18,5 +18,5 @@ public interface Credentials extends Config {
 	String getRemoteHost();
 
 	@Key("appUrl")
-	String getApp();
+	String getAppUrl();
 }
